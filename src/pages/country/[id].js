@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import styles from './country.module.css';
@@ -82,10 +83,12 @@ const Country = ({country}) => {
 
               <div className={styles.details_panel_borders_container}>
                 {borders.map(({flag, name, alpha3Code}) => 
-                  <div className={styles.details_panel_borders_country} key={alpha3Code}>
-                    <img src={flag} alt={`${name} flag`} />
-                    <div className={styles.details_panel_borders_name}>{name}</div>
-                  </div>
+                  <Link href={`/country/${alpha3Code}`} key={alpha3Code}>
+                    <div className={styles.details_panel_borders_country}>
+                      <img src={flag} alt={`${name} flag`} />
+                      <div className={styles.details_panel_borders_name}>{name}</div>
+                    </div>
+                  </Link>
                 )}
               </div>
             </div>
